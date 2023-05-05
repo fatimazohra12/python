@@ -1,0 +1,47 @@
+-- Create 'authentication' table
+CREATE TABLE authentication (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(255) NOT NULL,
+  mot_de_passe VARCHAR(255) NOT NULL
+);
+
+-- Create 'client' table
+CREATE TABLE client (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(255) NOT NULL,
+  prenom VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  telephone VARCHAR(255) NOT NULL
+);
+
+-- Create 'voiture' table
+CREATE TABLE voiture (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  marque VARCHAR(255) NOT NULL,
+  modele VARCHAR(255) NOT NULL,
+  image VARCHAR(255) NOT NULL,
+  type_carburant VARCHAR(255) NOT NULL,
+  nombre_places INT NOT NULL,
+  transmission VARCHAR(255) NOT NULL,
+  prix_par_jour DECIMAL(10, 2) NOT NULL
+);
+
+
+-- Create 'contract' table
+CREATE TABLE contract (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  client_id INT,
+  voiture_id INT,
+  start_date DATE NOT NULL,
+  end_date DATE NOT NULL,
+  FOREIGN KEY (client_id) REFERENCES client(id),
+  FOREIGN KEY (voiture_id) REFERENCES voiture(id)
+);
+
+
+--execute dakchi li lfoq 3ad hado: --
+ALTER TABLE voiture
+ADD reserved BOOLEAN DEFAULT FALSE;
+
+INSERT INTO authentication (username, mot_de_passe) VALUES ('', '');
+
